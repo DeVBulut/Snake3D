@@ -67,7 +67,6 @@
   <ItemGroup>
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleCollisionDecal.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Helpers\ME_AnimatorEvents.cs" />
-    <Compile Include="Assets\NewScriptableObjectScript.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleGravityPoint.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleTrails.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Rendering\ME_PerPlatformSettings.cs" />
@@ -80,7 +79,6 @@
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_LightCurves.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_TrailRendererNoise.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_CustomLight.cs" />
-    <Compile Include="Assets\NewMonoBehaviourScript.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\DemoResources\Scripts\ME_DemoGUI.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Helpers\ME_EffectSettingColor.cs" />
