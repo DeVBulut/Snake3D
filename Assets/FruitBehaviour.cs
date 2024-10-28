@@ -7,8 +7,7 @@ public class FruitBehaviour : MonoBehaviour
 
     private void Start()
     {
-        // Find the GameObject tagged as "GameManager" and get the GameManager component
-        GameObject gameManagerObject = GameObject.FindGameObjectWithTag("GameManager");
+        GameObject gameManagerObject = GameObject.FindGameObjectWithTag("GameController");
         if (gameManagerObject != null)
         {
             gameManager = gameManagerObject.GetComponent<GameManager>();

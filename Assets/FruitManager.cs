@@ -30,7 +30,7 @@ public class FruitManager : MonoBehaviour
         }
     }
 
-    void InstantiateRandomFruit()
+    public void InstantiateRandomFruit()
     {
         float randomX = Random.Range(Edge2.position.x, Edge1.position.x);
         float yPosition = Edge1.position.y;
