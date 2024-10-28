@@ -9,9 +9,12 @@ public class FruitManager : MonoBehaviour
     public float spawnInterval = 5f;
 
     private Coroutine spawnCoroutine;
+    public GameManager gameManager;
 
     void Start()
     {
+
+        // Start the spawning coroutine but it will only spawn if the game is started
         spawnCoroutine = StartCoroutine(SpawnFruitAtIntervals());
     }
 
@@ -19,7 +22,10 @@ public class FruitManager : MonoBehaviour
     {
         while (true)
         {
-            InstantiateRandomFruit();
+            if (gameManager != null && gameManager.startGame)
+            {
+                InstantiateRandomFruit();
+            }
             yield return new WaitForSeconds(spawnInterval);
         }
     }
@@ -40,12 +46,6 @@ public class FruitManager : MonoBehaviour
 
     public void SetSpawnInterval(float newInterval)
     {
-        spawnInterval = newInterval;
-
-        if (spawnCoroutine != null)
-        {
-            StopCoroutine(spawnCoroutine);
-        }
-        spawnCoroutine = StartCoroutine(SpawnFruitAtIntervals());
+        spawnInterval = Mathf.Max(2f, newInterval);
     }
 }
