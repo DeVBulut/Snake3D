@@ -1,20 +1,24 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Score Variables")]
+    [SerializeField] private int currentScore = 0;
+    [Tooltip("How much score decreases every second")]
+    public int scoreDecrement = 1; 
+    [Tooltip("How much score increases when a fruit is eaten")]
+    public int scoreIncrement = 5;
     public TMP_Text scoreText;
-    public int currentScore = 0;
-    public GameManager gameManager;
 
-    public int scoreDecrement = 1; // How much score decreases every second
-    public int scoreIncrement = 5; // How much score increases when a fruit is eaten
-
-    private float scoreUpdateInterval = 1f; // Interval for score reduction
+    private float scoreUpdateInterval = 1f;
     private float elapsedTime = 0f;
+    private GameManager gameManager;
 
     void Start()
     {
+        gameManager = GetComponent<GameManager>();
         UpdateScoreUI();
     }
 
