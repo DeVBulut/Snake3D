@@ -66,11 +66,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleCollisionDecal.cs" />
+    <Compile Include="Assets\FruitManager.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Helpers\ME_AnimatorEvents.cs" />
+    <Compile Include="Assets\AC Little Enchant Mesh VFX\Demo\Demo Script\DemoScript.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleGravityPoint.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleTrails.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Rendering\ME_PerPlatformSettings.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_MeshMaterialEffect.cs" />
+    <Compile Include="Assets\FruitBehaviour.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_Reflection.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\PSMeshRendererUpdater.cs" />
     <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Helpers\ME_ColorHelper.cs" />
@@ -87,6 +90,7 @@
   <ItemGroup>
     <None Include="Assets\KriptoFX\MeshEffect\Readme.txt" />
     <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_Gold.shader" />
+    <None Include="Assets\AC Little Enchant Mesh VFX\Read Me.txt" />
     <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_UberDistortion.shader" />
     <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_GlowCutoutGradient.shader" />
     <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_DistortionPasses.cginc" />
@@ -1153,8 +1157,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
