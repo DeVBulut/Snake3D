@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fruit
   - Wall
+  - Border
   layers:
   - Default
   - TransparentFX

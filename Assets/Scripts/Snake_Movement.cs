@@ -2,71 +2,99 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeMovement : MonoBehaviour
+public class Snake_Movement : MonoBehaviour
 {
-    public float gridSize = 1f;
-    public float moveSpeed = 0.2f;
-    public Transform segmentPrefab;
-    private Vector3 direction = Vector3.forward;
-    private float moveTimer;
-    private List<Transform> segments = new List<Transform>();
-    private Vector3 planeOffset = new Vector3(75, 86.5f, 0);
-    private Vector3 lastDirection = Vector3.forward;
+    // Settings
+    public float MoveSpeed = 5;
+    public int Gap = 10;
+
+    // References
+    public GameObject BodyPrefab;
+
+    // Lists
+    private List<GameObject> BodyParts = new List<GameObject>();
+    private List<Vector3> PositionsHistory = new List<Vector3>();
+    private List<Quaternion> RotationsHistory = new List<Quaternion>();
+
+    // Direction tracking
+    private Vector3 currentDirection = Vector3.forward; // Start moving forward
 
     void Start()
     {
-        segments.Add(this.transform);
-        transform.position = planeOffset;
+        GrowSnake();
+        GrowSnake();
+        GrowSnake();
+        GrowSnake();
+        GrowSnake();
     }
 
     void Update()
     {
-        HandleInput();
-    }
-
-    void FixedUpdate()
-    {
-        moveTimer += Time.fixedDeltaTime;
-        if (moveTimer >= moveSpeed)
+        //Test Growth
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            moveTimer = 0;
-            Move();
+            GrowSnake();
+        }
+
+        // Handle input for direction change
+        if (Input.GetKeyDown(KeyCode.W) && currentDirection != Vector3.back)
+        {
+            currentDirection = Vector3.forward;
+        }
+        else if (Input.GetKeyDown(KeyCode.S) && currentDirection != Vector3.forward)
+        {
+            currentDirection = Vector3.back;
+        }
+        else if (Input.GetKeyDown(KeyCode.A) && currentDirection != Vector3.right)
+        {
+            currentDirection = Vector3.left;
+        }
+        else if (Input.GetKeyDown(KeyCode.D) && currentDirection != Vector3.left)
+        {
+            currentDirection = Vector3.right;
+        }
+
+        // Move in the current direction
+        transform.position += currentDirection * MoveSpeed * Time.deltaTime;
+
+        // Rotate the head to face the direction of movement
+        transform.forward = currentDirection;
+
+        // Store position and rotation history
+        PositionsHistory.Insert(0, transform.position);
+        RotationsHistory.Insert(0, transform.rotation);
+
+        // Limit the history size to save memory
+        if (PositionsHistory.Count > BodyParts.Count * Gap)
+        {
+            PositionsHistory.RemoveAt(PositionsHistory.Count - 1);
+            RotationsHistory.RemoveAt(RotationsHistory.Count - 1);
+        }
+
+        // Move body parts
+        for (int i = 0; i < BodyParts.Count; i++)
+        {
+            // Use the exact position and rotation from history
+            int historyIndex = Mathf.Clamp(i * Gap, 0, PositionsHistory.Count - 1);
+            BodyParts[i].transform.position = PositionsHistory[historyIndex];
+            BodyParts[i].transform.rotation = RotationsHistory[historyIndex];
         }
     }
 
-    void HandleInput()
+    private void GrowSnake()
     {
-        if (Input.GetKeyDown(KeyCode.W) && lastDirection != Vector3.right)
-            direction = Vector3.left;
-        else if (Input.GetKeyDown(KeyCode.S) && lastDirection != Vector3.left)
-            direction = Vector3.right;
-        else if (Input.GetKeyDown(KeyCode.A) && lastDirection != Vector3.forward)
-            direction = Vector3.back;
-        else if (Input.GetKeyDown(KeyCode.D) && lastDirection != Vector3.back)
-            direction = Vector3.forward;
+        // Instantiate body instance and add it to the list
+        GameObject body = Instantiate(BodyPrefab);
+        BodyParts.Add(body);
     }
 
-    void Move()
+    private void OnTriggerEnter(Collider other)
     {
-        Vector3 nextPosition = transform.position + direction * gridSize;
-        nextPosition.x = Mathf.Clamp(nextPosition.x, planeOffset.x - 10, planeOffset.x + 10);
-        nextPosition.z = Mathf.Clamp(nextPosition.z, planeOffset.z - 10, planeOffset.z + 10);
-        nextPosition.y = planeOffset.y;
-
-        for (int i = segments.Count - 1; i > 0; i--)
+        // Check if the snake collides with the border
+        if (other.CompareTag("Border"))
         {
-            segments[i].position = segments[i - 1].position;
+            Debug.Log("Snake hit the border. Game Over!");
+            MoveSpeed = 0; // Pauses the game
         }
-
-        transform.position = nextPosition;
-        lastDirection = direction;
-    }
-
-    public void Grow()
-    {
-        Transform segment = Instantiate(segmentPrefab);
-        segment.position = segments[segments.Count - 1].position;
-        segments.Add(segment);
     }
 }
-
