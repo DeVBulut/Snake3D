@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 494211464}
   m_Layer: 0
   m_Name: Border (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 917737713}
   m_Layer: 0
   m_Name: Border (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 1580389684}
   m_Layer: 0
   m_Name: Border
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1209,13 +1209,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e92bb13e9789f845a87a2167eba7f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
   gridSize: 1
-  tailGap: 30
+  gapSize: 4
+  moveInterval: 0.25
+  timeBetweenDeath: 0.2
   snakeHead: {fileID: 1787045953}
   tailPrefab: {fileID: 2695474809263154649, guid: 03fc8242bb6b1f14ab341635a3c0eeb6, type: 3}
+  gameManager: {fileID: 2065126757}
   tail: []
-  moveInterval: 0.25
+  dead: 0
 --- !u!4 &1660258429
 Transform:
   m_ObjectHideFlags: 0
@@ -1466,9 +1468,11 @@ GameObject:
   - component: {fileID: 1787045952}
   - component: {fileID: 1787045951}
   - component: {fileID: 1787045950}
+  - component: {fileID: 1787045954}
+  - component: {fileID: 1787045955}
   m_Layer: 0
   m_Name: Snake Head
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1492,8 +1496,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.22258472}
+  m_Center: {x: 0, y: 0, z: 0.38870764}
 --- !u!23 &1787045951
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1556,12 +1560,53 @@ Transform:
   m_GameObject: {fileID: 1787045949}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 6.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1660258429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787045954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787045949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083066e7963c32e48b7dcb7a32448758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1660258428}
+  uimanager: {fileID: 2065126759}
+--- !u!54 &1787045955
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787045949}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 1
 --- !u!1 &1832147608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,7 +1621,7 @@ GameObject:
   - component: {fileID: 1832147610}
   m_Layer: 0
   m_Name: Border (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1818,7 +1863,8 @@ MonoBehaviour:
   minimumInterval: 2
   durationToReachMinimum: 60
   panel: {fileID: 424463794}
-  startGame: 0
+  runGame: 0
+  snake: {fileID: 1660258428}
 --- !u!4 &2065126758
 Transform:
   m_ObjectHideFlags: 0

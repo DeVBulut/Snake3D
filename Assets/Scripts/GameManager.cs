@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
     [Header("UI Element")]
     public GameObject panel;
     [Header("Game Start Variable(s)")]
-    public bool startGame = false;
+    public bool runGame = false;
     private FruitManager fruitManager;
     private float elapsedTime = 0f;
+
+    [Header("Snake Reference")]
+    public MovementSnake snake;
 
     void Start()
     {
@@ -23,15 +26,24 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Game Start Detection
-        if (!startGame && Input.anyKeyDown)
+        if (!runGame && Input.anyKeyDown)
         {
-            startGame = true;
+            runGame = true;
             panel.SetActive(false);
             fruitManager.InstantiateRandomFruit();
         }
+        else if(runGame && snake.dead)
+        {
+            runGame = false;
+        }
 
 
-        if (startGame) 
+        
+    }
+
+    void IncreaseFruitSpawnRate()
+    {
+        if (runGame) 
         {
             if (fruitManager != null && elapsedTime < durationToReachMinimum)
             {
@@ -43,5 +55,10 @@ public class GameManager : MonoBehaviour
                 fruitManager.SetSpawnInterval(newInterval);
             }
         }
+    }
+
+    void IncreaseSnakeSpeed()
+    {
+
     }
 }

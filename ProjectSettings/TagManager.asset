@@ -7,6 +7,8 @@ TagManager:
   - Fruit
   - Wall
   - Border
+  - Tail
+  - Head
   layers:
   - Default
   - TransparentFX

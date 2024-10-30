@@ -3817,13 +3817,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792891538}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31451502, y: -0.633309, z: 0.31451502, w: 0.633309}
-  m_LocalPosition: {x: 88.3, y: 99.3, z: 0}
+  m_LocalRotation: {x: 0.44479144, y: 0, z: 0, w: 0.89563423}
+  m_LocalPosition: {x: 76.1, y: 99.3, z: -14.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 52.82, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 52.82, y: 0, z: 0}
 --- !u!4 &1892777953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e87219811f3904478777f3d4ff28bf9, type: 3}
@@ -4353,9 +4353,17 @@ PrefabInstance:
       value: Cube (4)
       objectReference: {fileID: 0}
     - target: {fileID: 1321424484298395899, guid: 5533f12c3ba06de4ca0017240db9d723, type: 3}
+      propertyPath: Gap
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321424484298395899, guid: 5533f12c3ba06de4ca0017240db9d723, type: 3}
       propertyPath: moveSpeed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1321424484298395899, guid: 5533f12c3ba06de4ca0017240db9d723, type: 3}
+      propertyPath: BodyPrefab
+      value: 
+      objectReference: {fileID: 3380759778351415490, guid: 03fc8242bb6b1f14ab341635a3c0eeb6, type: 3}
     - target: {fileID: 6593904581797812194, guid: 5533f12c3ba06de4ca0017240db9d723, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.43
