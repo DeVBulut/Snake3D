@@ -6,11 +6,10 @@ public class MovementSnake : MonoBehaviour
     // Movement Settings
     [Tooltip("Grid size for each movement step.")]
     public float gridSize = 1f;
-    public float gapSize = 1f;
     [Tooltip("Time interval between each movement.")]
-    public float moveInterval = 0.2f;
+    public float moveInterval = 0.13f;
     [Tooltip("Time between destroying each tail segment when dying.")]
-    public float timeBetweenDeath = 0.2f;
+    public float timeBetweenDeath = 0.15f;
 
     [Header("Prefabs")]
     // Snake Components
@@ -36,6 +35,9 @@ public class MovementSnake : MonoBehaviour
     {
         dead = false;
         tail.Add(snakeHead);
+        Grow();
+        Grow();
+        Grow();
     }
 
     void Update()
@@ -102,7 +104,7 @@ public class MovementSnake : MonoBehaviour
     public void Grow()
     {
         Transform newTailSegment = Instantiate(tailPrefab);
-        Vector3 tailPosition = tail[tail.Count - 1].position - direction * gapSize;
+        Vector3 tailPosition = tail[tail.Count - 1].position - direction * gridSize;
         newTailSegment.position = tailPosition;
         newTailSegment.SetParent(transform);
         tail.Add(newTailSegment);
