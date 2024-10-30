@@ -2,32 +2,55 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementSnake : MonoBehaviour
-{
+{   [Header("Grid and Movement Variables")]
+    // Movement Settings
+    [Tooltip("Grid size for each movement step.")]
     public float gridSize = 1f;
-    public float tailGap = 3f;
+    public float gapSize = 1f;
+    [Tooltip("Time interval between each movement.")]
+    public float moveInterval = 0.2f;
+    [Tooltip("Time between destroying each tail segment when dying.")]
+    public float timeBetweenDeath = 0.2f;
+
+    [Header("Prefabs")]
+    // Snake Components
+    [Tooltip("Reference to the snake head transform.")]
     public Transform snakeHead;
+    [Tooltip("Prefab for the tail segments.")]
     public Transform tailPrefab;
+
+    [Header("References")]
+    [Tooltip("Reference to the GameManager script.")]
+    public GameManager gameManager;
+
+    // Runtime Variables
+    [Tooltip("List of tail segments including the head.")]
     public List<Transform> tail = new List<Transform>();
+
     private Vector3 direction = Vector3.forward;
     private Vector3 previousPosition;
     private float moveTimer;
-    public float moveInterval = 0.2f;
+    public bool dead;
 
     void Start()
     {
+        dead = false;
         tail.Add(snakeHead);
     }
 
     void Update()
     {
-        HandleInput();
-        moveTimer += Time.deltaTime;
-        if (moveTimer >= moveInterval)
+        if (gameManager != null && gameManager.runGame)
         {
-            moveTimer = 0f;
-            MoveSnake();
+            HandleInput();
+            moveTimer += Time.deltaTime;
+            if (moveTimer >= moveInterval)
+            {
+                moveTimer = 0f;
+                MoveSnake();
+            }
+            HandleTestInput();
         }
-        HandleTestInput();
     }
 
     void HandleInput()
@@ -79,8 +102,43 @@ public class MovementSnake : MonoBehaviour
     public void Grow()
     {
         Transform newTailSegment = Instantiate(tailPrefab);
-        Vector3 tailPosition = tail[tail.Count - 1].position - (direction * tailGap);
+        Vector3 tailPosition = tail[tail.Count - 1].position - direction * gapSize;
         newTailSegment.position = tailPosition;
+        newTailSegment.SetParent(transform);
         tail.Add(newTailSegment);
+
+        // Disable collision temporarily to avoid immediate collision with the head
+        Collider newSegmentCollider = newTailSegment.GetComponent<Collider>();
+        if (newSegmentCollider != null)
+        {
+            newSegmentCollider.enabled = false;
+            StartCoroutine(EnableColliderAfterDelay(newSegmentCollider, 0.5f));
+        }
+    }
+
+    private System.Collections.IEnumerator EnableColliderAfterDelay(Collider collider, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        collider.enabled = true;
+    }
+
+    public void Die()
+    {
+        if (!dead)
+        {
+            dead = true;
+            moveInterval = 99999999;
+            StartCoroutine(DestroyTailCoroutine());
+        }
+    }
+
+    private System.Collections.IEnumerator DestroyTailCoroutine()
+    {
+        for (int i = tail.Count - 1; i > 0; i--)
+        {
+            Destroy(tail[i].gameObject);
+            tail.RemoveAt(i);
+            yield return new WaitForSeconds(timeBetweenDeath); // Adjust time interval as needed
+        }
     }
 }

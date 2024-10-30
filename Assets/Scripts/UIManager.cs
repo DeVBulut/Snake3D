@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.startGame) {
+        if (gameManager.runGame) {
             elapsedTime += Time.deltaTime;
 
             if (elapsedTime >= scoreUpdateInterval)

@@ -27,7 +27,7 @@ public class FruitManager : MonoBehaviour
     {
         while (true)
         {
-            if (gameManager != null && gameManager.startGame)
+            if (gameManager != null && gameManager.runGame)
             {
                 InstantiateRandomFruit();
             }
