@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MovementSnake : MonoBehaviour
 {   [Header("Grid and Movement Variables")]
@@ -30,6 +31,7 @@ public class MovementSnake : MonoBehaviour
     private Vector3 previousPosition;
     private float moveTimer;
     public bool dead;
+    public GameObject gameOverUI;
 
     void Start()
     {
@@ -134,8 +136,23 @@ public class MovementSnake : MonoBehaviour
         {
             dead = true;
             moveInterval = 99999999;
+            StartCoroutine(GameOverSequence());
             StartCoroutine(DestroyTailCoroutine());
+            DestroyAllBuildings();
         }
+    }
+    private void DestroyAllBuildings()
+    {
+        GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
+        foreach (GameObject building in buildings)
+        {
+            Destroy(building);
+        }
+    }
+     private IEnumerator GameOverSequence()
+    {
+        yield return new WaitForSeconds(1);
+        gameOverUI.SetActive(true);
     }
 
     private System.Collections.IEnumerator DestroyTailCoroutine()

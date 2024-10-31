@@ -9,6 +9,7 @@ TagManager:
   - Border
   - Tail
   - Head
+  - Building
   layers:
   - Default
   - TransparentFX
