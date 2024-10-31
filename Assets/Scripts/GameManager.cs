@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,11 +16,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Snake Reference")]
     public MovementSnake snake;
+    private AudioSource musicSource;
+    [Header("Sound Components")]
+    [SerializeField] private AudioSource playSoundSource;
 
     void Start()
     {
         fruitManager = GetComponent<FruitManager>();
         initialInterval = fruitManager.spawnInterval;
+        musicSource = GetComponent<AudioSource>(); 
         if (fruitManager != null) {fruitManager.SetSpawnInterval(initialInterval);}
     }
 
@@ -30,10 +35,14 @@ public class GameManager : MonoBehaviour
         {
             runGame = true;
             panel.SetActive(false);
+            musicSource.Play(0);
+            playSoundSource.Play(0);
             fruitManager.InstantiateRandomFruit();
+
         }
         else if(runGame && snake.dead)
         {
+            musicSource.Pause();
             runGame = false;
         }
 
