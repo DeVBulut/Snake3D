@@ -32,6 +32,7 @@ public class MovementSnake : MonoBehaviour
     private float moveTimer;
     public bool dead;
     public GameObject gameOverUI;
+    public GameObject[] buildings;
 
     void Start()
     {
@@ -143,7 +144,6 @@ public class MovementSnake : MonoBehaviour
     }
     private void DestroyAllBuildings()
     {
-        GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
         foreach (GameObject building in buildings)
         {
             Destroy(building);

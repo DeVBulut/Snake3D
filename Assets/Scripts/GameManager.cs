@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
             runGame = false;
         }
 
-
+        IncreaseFruitSpawnRate();
         
     }
 
@@ -69,13 +71,15 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseSnakeSpeed(bool isBurger)
     {
-        if (!isBurger)
-        {
-            snake.moveInterval -= intervalChange;
-        }
-        else
-        {
-            snake.moveInterval -= intervalChange * 2;
+        if (snake.moveInterval > 0.03) {
+            if (!isBurger)
+            {
+                snake.moveInterval -= intervalChange;
+            }
+            else
+            {
+                snake.moveInterval -= intervalChange * 2;
+            }
         }
     }
 }

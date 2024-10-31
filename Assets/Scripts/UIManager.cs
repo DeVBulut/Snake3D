@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -51,5 +52,10 @@ public class UIManager : MonoBehaviour
     private void UpdateScoreUI()
     {
         scoreText.text = $"Score: {currentScore}";
+    }
+
+    public void RefleshScene()
+    {
+        SceneManager.LoadScene("FinalScene");
     }
 }
