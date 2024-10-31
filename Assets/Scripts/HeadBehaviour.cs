@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class HeadBehaviour : MonoBehaviour
 {
+    [Header("References To Manager Components")]
     [SerializeField] private MovementSnake parent;
     [SerializeField] private UIManager uimanager;
-    private Rigidbody rb;
-    private AudioSource snakeSoundSource;
+    [SerializeField] private GameManager gameManager;
+
+    [Header("Audio Players")]
     public AudioClip deathSound;
     public AudioClip eatingSound;
+
+    private Rigidbody rb;
+    private AudioSource snakeSoundSource;
+
     private void Start() 
     {
         parent = transform.parent.GetComponent<MovementSnake>();    
@@ -36,6 +42,7 @@ public class HeadBehaviour : MonoBehaviour
             {
                 snakeSoundSource.PlayOneShot(eatingSound);
                 uimanager.IncreaseScore(fruitScript.isBurger);
+                gameManager.IncreaseSnakeSpeed(fruitScript.isBurger);
                 parent.Grow();
                 fruitScript.isEaten = true;
             }

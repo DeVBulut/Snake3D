@@ -3,11 +3,11 @@ using System.Collections;
 
 public class FruitManager : MonoBehaviour
 {
-    [Header("Spawn Boundaries")]
+    [Header("Fruit Spawn Boundaries")]
     [Tooltip("Edge 1 is Top Right Side")]
-    public Transform Edge1;
+    public Transform rightTopEdge;
     [Tooltip("Edge 2 is Bottom Left Side")]
-    public Transform Edge2;
+    public Transform leftBottomEdge;
     [Header("Fruit Prefab List")]
     public GameObject[] FruitPrefabs;
     [Header("Fruit Spawn Interval")]
@@ -37,9 +37,9 @@ public class FruitManager : MonoBehaviour
 
     public void InstantiateRandomFruit()
     {
-        float randomX = Random.Range(Edge2.position.x, Edge1.position.x);
-        float yPosition = Edge1.position.y;
-        float randomZ = Random.Range(Edge2.position.z, Edge1.position.z);
+        float randomX = Random.Range(leftBottomEdge.position.x, rightTopEdge.position.x);
+        float yPosition = rightTopEdge.position.y;
+        float randomZ = Random.Range(leftBottomEdge.position.z, rightTopEdge.position.z);
 
         Vector3 randomPosition = new Vector3(randomX, yPosition, randomZ);
 

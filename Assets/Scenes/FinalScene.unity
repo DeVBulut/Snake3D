@@ -760,6 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 80193021}
   uimanager: {fileID: 1787487507}
+  gameManager: {fileID: 1787487508}
   deathSound: {fileID: 8300000, guid: 7ca76a8bbf983614cb89d2f77b0f5d5a, type: 3}
   eatingSound: {fileID: 8300000, guid: 5fcc2b4dfd864d347a921e58864c3f41, type: 3}
 --- !u!65 &310581651
@@ -4896,8 +4897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e55c7c2acc8e04d8f6ede1372b9165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Edge1: {fileID: 1581199977}
-  Edge2: {fileID: 656165542}
+  rightTopEdge: {fileID: 1581199977}
+  leftBottomEdge: {fileID: 656165542}
   FruitPrefabs:
   - {fileID: 6166396034776893009, guid: 1a3dbd45eec53ba4f8b8703f15dcaac4, type: 3}
   - {fileID: 2793945606500960410, guid: feeee6f82d3baf940a74a2e3cfc0eae9, type: 3}
@@ -4939,6 +4940,7 @@ MonoBehaviour:
   panel: {fileID: 957465990}
   runGame: 0
   snake: {fileID: 80193021}
+  intervalChange: 0.0025
   playSoundSource: {fileID: 1787487511}
 --- !u!4 &1787487509
 Transform:

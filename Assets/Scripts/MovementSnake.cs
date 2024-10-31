@@ -60,18 +60,22 @@ public class MovementSnake : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && direction != Vector3.back)
         {
             direction = Vector3.forward;
+            MoveSnake();
         }
         else if (Input.GetKeyDown(KeyCode.S) && direction != Vector3.forward)
         {
             direction = Vector3.back;
+            MoveSnake();
         }
         else if (Input.GetKeyDown(KeyCode.A) && direction != Vector3.right)
         {
             direction = Vector3.left;
+            MoveSnake();
         }
         else if (Input.GetKeyDown(KeyCode.D) && direction != Vector3.left)
         {
             direction = Vector3.right;
+            MoveSnake();
         }
     }
 
@@ -140,7 +144,7 @@ public class MovementSnake : MonoBehaviour
         {
             Destroy(tail[i].gameObject);
             tail.RemoveAt(i);
-            yield return new WaitForSeconds(timeBetweenDeath); // Adjust time interval as needed
+            yield return new WaitForSeconds(timeBetweenDeath);
         }
     }
 }

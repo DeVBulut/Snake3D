@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
     private FruitManager fruitManager;
     private float elapsedTime = 0f;
 
-    [Header("Snake Reference")]
+    [Header("Snake Variables")]
     public MovementSnake snake;
+    public float intervalChange = 0.0025f;
     private AudioSource musicSource;
     [Header("Sound Components")]
     [SerializeField] private AudioSource playSoundSource;
@@ -66,8 +67,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void IncreaseSnakeSpeed()
+    public void IncreaseSnakeSpeed(bool isBurger)
     {
-
+        if (!isBurger)
+        {
+            snake.moveInterval -= intervalChange;
+        }
+        else
+        {
+            snake.moveInterval -= intervalChange * 2;
+        }
     }
 }
