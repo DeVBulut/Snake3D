@@ -1,25 +1,22 @@
-# 🐍 3D Snake Game – Unity Project
+# 🐍 3D Snake Game – Game Development Course @ SUU
 
-This is a 3D version of the classic Snake game, developed in Unity. It features grid-based movement, tail growth, collectible mechanics, and a retro-inspired design in a modern 3D space.
+This is a modern 3D take on the classic Snake game, developed as part of the **Game Development course at Southern Utah University (SUU)**. The project explores 3D movement, and responsive controls while staying faithful to the original gameplay concept.
 
 ---
 
 ## 🎮 Gameplay Preview
 
-![Snake Gameplay]![SnakeGameFootage](https://github.com/user-attachments/assets/ce57f8b7-83ae-45b7-b095-3868fcedfea2)  
+![Snake Gameplay](![SnakeGameFootage](https://github.com/user-attachments/assets/60b586e6-df56-4fdd-bff6-cd802ad6da2f))  
 *Real-time demo of the 3D Snake Game.*
-
-> You can also [watch a demo video here]()
 
 ---
 
 ## 🧩 Features
 
-- 🟩 Grid-based movement system
 - 🧠 Snake logic with dynamic tail growth
-- 🍎 Collectible system (e.g., apples/food)
-- 💥 Collision detection with self or walls.
-- 📷 3D camera layout with smooth tracking.
+- 🍎 Collectibles that increase length
+- 💥 Collision detection with tail and boundaries
+- 🎥 Smooth 3D camera tracking
 
 ---
 
@@ -27,17 +24,25 @@ This is a 3D version of the classic Snake game, developed in Unity. It features 
 
 - Unity Engine (URP)
 - C#
-- Basic 3D modeling / grid alignment
-- Gizmos
+- 3D rendering with Unity primitives
+- Grid logic and transform-based movement
+
+---
+
+## 📘 Course Information
+
+**Game Development Course**  
+Southern Utah University – Spring 2025  
+Instructor: *(Add name if you'd like)*
 
 ---
 
 ## 📦 Project Status
 
-This project is complete as a polished prototype. It’s a visual exploration of classic mechanics in a modern space. More levels or styles may be explored later.
+This project is complete and was submitted as a course assignment. It remains a fully playable prototype and a visual demonstration of grid logic in Unity.
 
 ---
 
 ## 📜 License
 
-MIT — feel free to use this game logic or grid-based system for your own experiments!
+MIT — feel free to use or adapt this codebase for your own educational or experimental projects.
