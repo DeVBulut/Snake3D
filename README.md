@@ -33,14 +33,6 @@ This is a modern 3D take on the classic Snake game, developed as part of the **G
 
 ---
 
-## 📘 Course Information
-
-**Game Development Course**  
-Southern Utah University – Spring 2025  
-Instructor: *(Add name if you'd like)*
-
----
-
 ## 📦 Project Status
 
 This project is complete and was submitted as a course assignment. It remains a fully playable prototype and a visual demonstration of grid logic in Unity.
