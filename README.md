@@ -6,15 +6,12 @@ This is a modern 3D take on the classic Snake game, developed as part of the **G
 
 ## 🎮 Gameplay Preview
 
-![Snake Gameplay 0](![Screenshot 2025-05-06 230405](https://github.com/user-attachments/assets/3c785fe4-3510-42c8-8002-3416e799703c)
-)
-)  
-![Snake Gameplay 1](![Screenshot 2025-05-06 230412](https://github.com/user-attachments/assets/bd6584e4-961e-403c-a95b-23cdebbc8f18)
-)
-)  
-![Snake Gameplay 2](![Screenshot 2025-05-06 230418](https://github.com/user-attachments/assets/f85e30dc-0ef9-49cb-bc58-37710eafa9ee)
-)
-)  
+![Snake Gameplay 0](https://github.com/user-attachments/assets/3c785fe4-3510-42c8-8002-3416e799703c)
+
+![Snake Gameplay 1](https://github.com/user-attachments/assets/bd6584e4-961e-403c-a95b-23cdebbc8f18)
+
+![Snake Gameplay 2](https://github.com/user-attachments/assets/f85e30dc-0ef9-49cb-bc58-37710eafa9ee)
+
 
 ---
 
