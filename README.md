@@ -6,7 +6,8 @@ This is a modern 3D take on the classic Snake game, developed as part of the **G
 
 ## 🎮 Gameplay Preview
 
-![Snake Gameplay](![SnakeGameFootage](https://github.com/user-attachments/assets/60b586e6-df56-4fdd-bff6-cd802ad6da2f))  
+![Snake Gameplay](![SnakeGameFootage](![SnakeGameFootage](https://github.com/user-attachments/assets/7014265e-d119-4d63-8cb9-91e907d4f033)
+)  
 *Real-time demo of the 3D Snake Game.*
 
 ---
