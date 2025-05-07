@@ -15,6 +15,15 @@ This is a modern 3D take on the classic Snake game, developed as part of the **G
 
 ---
 
+## ⌨️ Controls
+
+- Press W or ⬆️ Key to Move Up.
+- Press S or ⬇️ Key to Move Down.
+- Press D or ➡️ Key to Move Right. 
+- Press A or ⬅️ Key to Move Left.
+
+---
+
 ## 🧩 Features
 
 - 🧠 Snake logic with dynamic tail growth
